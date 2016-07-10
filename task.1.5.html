@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>task.1.5</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+    }
+    
+    body {
+        font-family: sans-serif;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        font-size:15px;
+    }
+    
+    article,
+    aside,
+    header,
+    main,
+    nav,
+    section,
+    footer {
+        display: block;
+    }
+    
+    a {
+        background-color: transparent;
+    }
+    a,a:visited{
+    	text-decoration:none;
+    }
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        color: inherit;
+        font: inherit;
+    }
+    
+    button {
+        overflow: visible;
+    }
+    
+    button,
+    select {
+        text-transform: none;
+    }
+    
+    button,
+    input[type=button],
+    input[type=submit],
+    input[type=reset] {
+        cursor: pointer;
+        -webkit-appearance: button;
+    }
+    
+    input {
+        line-height: normal;
+    }
+    
+    input[type=checkbox],
+    input[type=radio] {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    
+    textarea {
+        overflow: auto;
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    
+    tr,
+    td {
+        padding: 0;
+    }
+    header{
+    	width:100%;
+    	height:100px;
+    }
+    nav{width:100%;height:100px;background-color:#337AB7;}
+    .logo{float:left;width:200px;height:80px;padding:10px 20px;text-align:center;}
+    nav img{width:200px;height:80px;}
+    nav ul{float:right;}
+    nav ul li{float:left;;width:90px;height:80px;padding:10px;line-height:80px;}
+    li{list-style-position:inside;}
+    main{padding:0 20px; background-color:gray;overflow:auto;}
+    .left{margin-right:370px;}
+    .right{width:310px;float:right;}
+	.bg{background-color:#fff;margin-top:20px;padding:30px 20px;}
+	h4,.author{color:#CBCCC9;}
+	section p{text-indent:30px;line-height:25px;}
+	section img{width:200px;height:150px;margin:10px 0;}
+	.box img{width:100px;height:50px;}
+	.box{float:left;margin:20px;padding:10px;border:1px solid #eee;}
+	.clear{clear:both;}
+	.imgs{overflow:auto;}
+	ol li{line-height:30px;}
+	table{width:100%;}
+	thead{background-color:#000;color:#fff;}
+	tr td:nth-child(n+1){width:40%;}
+	td{height:30px;line-height:30px;border:1px #eee solid;}
+	tbody tr:last-child{background-color:#eee;}
+	.list{list-style:none;line-height:30px;margin:0 20px;}
+	label{display:inline-block;width:100px;text-align:right;margin-right:10px;}
+	.prig{margin-left:120px;}
+	aside input,select,textarea{margin:10px 0;}
+	.submit{margin:10px 0;width:100%;height:30px;line-height:30px;background-color:#337AB7;text-align:center;border:none;border-radius:10px;color:#fff;}
+	input[type=radio]:checked{background-color:#337AB7;}
+	.forarea{vertical-align: top;line-height:36px;}
+	footer{position:fixed;bottom:0;width:100%;height:50px;background-color:#000;color:#fff;text-align:center;line-height:50px;}
+    /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+    /* html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+a{background-color:transparent}
+a:active,a:hover{outline:0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:700}
+dfn{font-style:italic}
+h1{font-size:2em;margin:.67em 0}
+mark{background:#ff0;color:#000}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:1em 40px}
+hr{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+pre{overflow:auto}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+button{overflow:visible}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+input{line-height:normal}
+input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+input[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+textarea{overflow:auto}
+optgroup{font-weight:700}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0} */
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+        <div class="logo">
+            <img src="images/Lighthouse.jpg" alt="logo">
+            </div>
+            <div class="navbar">
+            <ul>
+                <li><a href="">导航链接1</a></li>
+                <li><a href="">导航链接2</a></li>
+                <li><a href="">导航链接3</a></li>
+                <li><a href="">导航链接4</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <div class="right bg">
+        <aside>
+            <form action="">
+                <h2>celanbiaoti</h2>
+                <br>
+                <label for="email">email</label>
+                <input type="email" id="email"><br>
+                <p class="prig">邮箱地址请按标准格式</p>
+               
+                <label for="pass">password</label>
+                <input type="password" id="pass"><br>
+                <label for="agin">password agin</label>
+                <input type="password" id="agin"><br>
+                <p class="prig">miman wei 6-12 shuzi</p>
+                
+                <label for="sex">xingbie</label>
+                <input type="radio" name="sex" checked="checked" value="male">男
+                <input type="radio" name="sex" value="female">女
+                <br>
+                <label for="city">chengshi</label>
+                <select name="city" id="city">
+                    <option value="">beij</option>
+                    <option value="">nanj</option>
+                    <option value="">xij</option>
+                    <option value="">dongj</option>
+                    </select>
+                    <br>
+                    <label for="aihao">sport</label>
+                    <input type="checkbox" name="aihao" checked="checked">运动
+                    <input type="checkbox" name="aihao">艺术
+                    <input type="checkbox" name="aihao">科学
+                 
+                    <label for="detail" class="forarea">个人描述</label>
+                    <textarea name="detail" id="detail" placeholder="输入个人介绍"></textarea>
+            
+                    <button type="submit" class="submit">确认提交</button>
+                
+            </form>
+        </aside>
+        </div>
+    <div class="left">
+        <article id="art-one" class="bg">
+            <h2>文章一级标题</h2>
+            <br>
+            <h4>文章二级标题</h4>
+            <br>
+            <p class="author">zuozheshijian</p>
+            <br>
+            <section>
+                <p>这是一个很长的段落 ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落， ，这是一个很长的段落，换行了</p>
+                    <p> 这是一个很长的段落， ，这是一个很长的段落， ，<a href="">这是一个链</a> 接， ，这是一个很长的段落， ，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，</p>
+                <img src="images/Desert.jpg" alt="images">
+                <p>，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，，<a href="">这是一个很长的段落链接到新的窗口</a>，，这是一个很长的段落，，这是一个很长的段落，，这是一个很长的段落，</p>
+            </section>
+        </article>
+        <article id="art-two" class="bg">
+            <h2>文章一级标题</h1><br>
+            <h4>文章二级标题</h4><br>
+            <p class="author">zuozhe shjian</p><br>
+            <section>
+                <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，huanhang</p>
+         		<p>是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+                    <a href="">这是一个很长的段落，lianjie</a>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，</p>
+                <img src="images/Desert.jpg" alt="">
+                <ul class="list">
+                    <li>liebiaoyi1</li>
+                    <li>liebiaoyi2</li>
+                    <li>liebiaoyi3</li>
+                </ul>
+            </section>
+        </article>
+        <div class="bg imgs">
+            <h2>tupian</h2>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="images">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+            <div class="box">
+                <p>haokandetupian</p><br>
+                <img src="images/Lighthouse.jpg" alt="">
+            </div>
+        </div>
+        <article class="bg clear">
+            <h2>zuihouyijibiaoti</h2><br>
+            <h4>erjibiaoti</h4><br>
+            <p class="author">zuozhe shijian</p><br>
+            <ol>
+                <li>排名1</li>
+                <li>排名2</li>
+                <li>排名3</li>
+            </ol>
+            <br>
+            <table>
+                <caption>这是一个表格这是一个表格这是一个表格这是一个表格</caption>
+                <thead>
+                    <tr>
+                        <td>表头</td>
+                        <td>表头</td>
+                        <td>表头</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>单元格内容</td>
+                        <td>单元格内容</td>
+                        <td><a href="">单元格内容</a></td>
+                    </tr>
+                    <tr>
+                        <td>单元格内容</td>
+                        <td>单元格内容</td>
+                        <td><a href="">单元格内容</a></td>
+                    </tr>
+                    <tr>
+                        <td>单元格内容</td>
+                        <td>单元格内容</td>
+                        <td><a href="">单元格内容</a></td>
+                    </tr>
+                    <tr>
+                        <td>单元格内容</td>
+                        <td>单元格内容</td>
+                        <td><a href="">单元格内容</a></td>
+                    </tr>
+                    <tr>
+                        <td>总计</td>
+                        <td rowspan="2">1000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        </div>
+        
+    </main>
+    <footer>
+        <p>banequansuoyou</p>
+    </footer>
+</body>
+
+</html>
