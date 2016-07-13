@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task.1.10</title>
+    <style type="text/css">
+    .wrapper {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+       /*  -webkit-flex-wrap: wrap-reverse;
+            -ms-flex-wrap: wrap-reverse;
+                flex-wrap: wrap-reverse; */
+        -webkit-box-pack: space-between;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: space-between;
+                justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+				padding:20px;
+    }
+    
+    .first,
+    .second,
+    .third,
+    .four {
+        width: 150px;
+        border: 1px solid #f33;
+        margin-top:10px;
+    }
+    
+    .first {
+        height: 120px;
+    }
+    
+    .second {
+        height: 100px;
+    }
+    
+    .third {
+        height: 40px;
+    }
+    
+    .four {
+        border: 1px solid #105CFF;
+        height: 200px;
+      /*   -webkit-align-self: flex-end;
+            -ms-flex-item-align: end;
+                align-self: flex-end; */
+    }
+    @media all and (max-width: 640px) {
+        .wrapper{
+            -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+            -webkit-box-align: start;
+            -webkit-align-items: flex-start;
+                -ms-flex-align: start;
+                        -ms-grid-row-align: flex-start;
+                    align-items: flex-start;
+        }
+        .four{
+            -webkit-box-ordinal-group:0;
+            -webkit-order:-1;
+                -ms-flex-order:-1;
+                    order:-1;
+        }
+    }
+   
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+        <div class="four"></div>
+    </div>
+</body>
+
+</html>
+
+
+
+ 
