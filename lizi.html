@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+
+	.main {        
+           float: left;       
+           width: 100%;   
+           border:1px solid #f33;
+ }  .sub {       
+           float: left;        
+           width: 190px;        
+           margin-left: -100%;  
+           border:1px solid #000;  }  
+            .extra {        
+             float: left;        
+             width: 190px;        
+             margin-left: -190px;  
+             border:1px solid #2ff; 
+ }
+ #bd {        
+          padding: 0 230px 0 190px;   
+ }
+ .sub {        
+           float: left;        
+           width: 190px;        
+           margin-left: -100%;        
+           position: relative;        
+           left: -190px;    }  
+  .extra {        
+             float: left;        
+             width: 230px;        
+             margin-left: -230px;        
+             position: relative;        
+             right: -230px;    }
+              .content {      width:100%;  overflow: hidden; }   
+.post {     width: 120px;     float: left;     margin-bottom: -10000px;     padding-bottom: 10000px;     background: #ff0;
+word-wrap:break-word; margin-right:20px; }
+.center{
+	background-color:#F33;margin:0 auto;
+	text-align:center;
+	margin:10px;
+}
+.div1{
+	float:left;
+	width:100%;
+	height:50px;
+	background-color:#f33;
+
+}
+.div2{
+    float:left;
+	width:50px;
+	height:50px;
+	margin-left:-100%;
+	background-color:#ff2;
+	
+}
+.div3{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-left:-50px;
+	background-color:blue;
+}
+/* .left{
+	float:left;
+	width:100px;
+	background:#f33;
+	height:100px;
+}
+.right{
+	float:right;
+	width:100px;
+	background:blue;height:100px;
+}
+.center{
+	margin:0 100px;
+	background:#333;height:100px;
+} */
+/* .row {
+    position: relative;
+} */
+.left {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    float: left;
+}
+.right {
+    height: 100px;
+    background-color: blue;
+    margin-left: 100px;
+}
+
+.bottom {
+    height: 100px;
+    background-color: yellow;
+}
+	</style>
+
+</head>
+<body>
+	<div id="page">    
+      <div id="hd"></div>    
+         <div id="bd">        
+              <div class="main"></div>        
+              <div class="sub"></div>        
+              <div class="extra"></div>    
+         </div>   
+      <div id="ft"></div></div>
+      <div class="content">
+      	<div class="post">asfhe</div>
+      	<div class="post"> hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf</div>
+      	<div class="post">asfhesdjkhglrsghrkljghlrghrklgskdgfnlsk hfsfhekhf  hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf hfsfhekhf</div>
+      </div>
+      <div class="center">
+      	div
+      </div>
+      <div class="div1"></div>
+       <div class="div2"></div>
+      <div class="div3"></div>
+      <div style="display:table-cell;vertical-align:middle;text-align:center;width:200px;height:200px;border:1px solid #f33">
+      	<div style="display:inline-block;width:100px;height:100px;background:#f33"></div>
+      </div>
+      <div style="position:relative;width:200px;height:200px;border:1px solid #f33">
+      	<div style="position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;width:100px;height:100px;background:#f33"></div>
+      </div>
+      <div style="float:left;position:relative;left:50%;clear:both;">
+      	<div style="position:relative;left:-50%;white-space:nowrap;"></div>
+      </div>
+ <!--      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center"></div> -->
+    
+            <div class="left">DIV-A</div>
+            <div class="right">DIV-B</div>
+        
+     <script type="text/javascript">
+	function isArray(arr){
+		return Object.prototype.toString.call(arr)==='[Object,Array]';
+	}
+	function isFunction(fn){
+		return Object.prototype.toString.call(fn)==='[Object,Function]'
+	}
+		var allchids=[];
+	// var childs=function(ele){
+	
+	// 	var child=ele.childNodes;
+	// 	if (child.length>0) {
+	// 	for (var i = 0, len = child.length;i < len; i++) {
+	// 		allchids.push(child[i]);
+	// 		allchids=allchids.concat(childs(child[i]));
+	// 	}
+	// }
+	// 	return allchids;
+	// 	console.log(allchids);
+	// };
+	// var body= document.getElementsByTagName("body")[0];
+	// childs(body);
+//深度拷贝
+var cloneObject=function(ele) {
+	var clone;
+	//日期
+	if (ele instanceof Date) {
+		clone=new Date(ele.getDate);
+		return clone;
+	}
+	//数组
+	if (ele instanceof Array) {
+		clone=[];
+		for(var i=0,len=ele.length;i<len;i++){
+			clone[i]=cloneObject(ele[i]);
+		}
+	}
+	//Object
+	if (ele instanceof Object) {
+		clone={};
+		for(var items in ele){
+			if (ele.hasOwnPrototype(items)) {
+			clone[items]=cloneObject(ele[items]);
+			}
+		}
+	}
+
+	//number,string,null,undefined,boolean;
+	return ele;
+}
+
+//数组去重
+
+	function uniqArray(arr){
+		for (var i = 0, len = arr.length; i < len; i++) {
+			var j=arr.indexOf(arr[i]);
+        	if ( arr.indexOf(arr[i]) !=i ) {    // indexOf方法不支持IE9以下
+          arr.splice(i,1);
+          i--;
+          len--;
+        	}
+		
+		}
+		return arr;
+	}
+	function uniqArray(arr){
+		var result=[];
+		for(var i=0,len=arr.length;i<len;i++){
+			if (result.indexOf(arr[i])<0) {
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+var a=uniqArray([1,1,1,1,1,1,1]);
+console.log(a);
+function uniqArray1(source) {
+    var len = source.length,
+        result = source.slice(0),
+        i, datum;
+
+
+    // 从后往前双重循环比较
+    // 如果两个元素相同，删除后一个
+    while (--len > 0) {
+        datum = result[len];
+        i = len;
+        while (i--) {
+            if (datum === result[i]) {
+                result.splice(len, 1);
+                break;
+            }
+        }
+    }
+
+    return result;
+};var b=uniqArray1([1,,,"","",1,1,2,3,"",,,4]);
+console.log(b);
+function uniqArray(arr){
+	var object={};
+	var result;
+	for (var i = 0; i < arr.length; i++) {
+		var key=arr[i];
+		if (!object[key]) {
+			result.push(arr[i]);
+			object[key]=true;
+		}
+		return result;
+	};
+}
+function uniqArray2(arr) {
+    var obj = {};
+    for (var i = 0, len = arr.length; i < len; i++) {
+        obj[arr[i]] = true;
+    }
+    return Object.keys(obj);
+};
+function uniqArray(arr){
+	arr.sort();
+	var result=[];
+	result.push(arr[0]);
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i]!==result[result.length-1]){
+			result.push(arr[i]);
+		}
+	};
+	return result;
+}
+function trim(str){
+	var len=str.length;
+	if (len<0) return;
+	for (var i = 0; i < len; i++) {
+		if(str[i]!=" "&&str[i]!="\t"){
+			break;
+		}
+	}
+	for(var j=len-1;j>=0;j--){
+		if (str[j]!=" "&&str[j]!="\t") {
+			break;
+		}
+	}
+	return str.slice(i,j+1);
+}
+function trim(str){
+	return str.replace(/^\s+|\s+$/g,'');
+}
+function each(arr,fn){
+	for( var i in arr){
+		fn(arr[i],i);
+	}
+}
+function getObjectlength(obj){
+	var count=0;
+	for(var key in obj){
+		if (obj.hasOwnProperty(key)) {
+			count++;
+		}
+	} 
+	return count;
+}
+function getObjectlength(obj){
+	return Object.keys(obj).length;
+}
+function teltest(str){
+	var pattern=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+	return pattern.test(str);
+}
+function emailtest(str){
+	var pattern=/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+	return pattern.test(str);
+}
+function hasClass(ele,classname){
+	if (ele.className.indexOf(classname)>0) {
+		return true;
+	}
+	return false;
+}
+function addClass(ele,name){
+	return ele.className=ele.className===""?name:ele.className+" "+name;
+}
+function removeClass(ele,classname){
+	return ele.className=ele.className.indexOf(classname)<0?ele.className:ele.className.replace(classname,"");
+	}
+function isSibling(ele1,ele2){
+	return ele1.parentNode===ele2.parentNode;
+}
+function getPosition(ele){
+	var pos={};
+	pos.x=ele.getBoundingClientRect().left+Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
+	pos.y=ele.getBoundingClientRect().top+Math.max(document.documentElement.scrollLeft,document.body.scrollTop);
+	return pos;
+}
+function addevent(ele,event,listener){
+	if (ele.addEventListener) {
+		ele.addEventListener(event,listener);
+	}else {
+		if (ele.attachEvent) {
+			ele.attachEvent("on"+event,listener);
+		}
+	}
+}
+function removeevent(ele,event,listener){
+	if (ele.removeEventListener) {
+		ele.removeEventListener(event,listener);
+	} else {
+		if (ele.detachEvent()) {
+			ele.detachEvent("on"+event,listener);
+		}
+	}
+}
+function addClick(ele,listener){
+	addevent(ele,"click",listener);
+}
+function addEnter(ele,listener){
+	addEnter(ele,"keydown",function(event){
+		if (event.keyCode==13) {
+			listener();
+		}
+	})
+}
+function delgateEvent(ele,tag,eventName,listener){
+	addevent(ele,eventName,function(event){
+		var target=event.target||event.srcElement;
+		if (target.tagName.toLowerCase()==tag.toLowerCase()) {
+			listener.call(target,event);
+		}
+	})
+}
+function setcookie(cookiename,cookievalue,express){
+	var cookie=cookiename+'='+encodeURIComponent(cookievalue);
+	if ((typeof express)=="number") {
+		cookie+=";max-age="+(express*60*60*24);
+	}
+	document.cookie=cookie;
+}
+function getCookie(){
+	var allcookie=document.cookie;
+	var cookie={};
+	if (allcookie.length==0) return cookie;
+	var list=allcookie.split("; ");
+	for (var i = 0; i < list.length; i++) {
+		var cookielist=list[i].split("=");
+		cookie[cookielist[0]]=decodeURIComponent(cookielist[1]);
+	}
+	return cookie;
+}
+getCookie();
+function ajax(url,options){
+	var xmlhttp;
+	var dataresult=[];
+	if (window.XMLHttpRequest) {
+		xmlhttp=new XMLHttpRequest();
+	}else {
+		xmlhttp=new ActiveObject("Microsoft.XMLHTTP");
+	}
+	if (options.data) {
+		for(var item in options.data){
+			dataresult.push(item+"="+encodeURI(options.data[item]));
+		}
+		var datares=dataresult.join("&");
+	}
+	if (!options.type) {
+		options.type="GET";
+	}
+	options.type=options.type.toUpperCase();
+	if (options.type=="GET") {
+		var myurl="";
+		if (options.data) {
+		myurl=url+"?"+datares;
+		}
+		else {
+			mturl=url;
+		}
+		xmlhttp.open("GET",myurl,true);
+		xmlhttp.send();
+	}
+	if (options.type=="POST") {
+		xmlhttp.open("POST",url,true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send(datares);
+	}
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readystate==4) {
+			if (xmlhttp.status==200) {
+				if (options.onsuccess) {
+					options.onsuccess(xmlhttp.responseText,xmlhttp.responseXML);
+				}
+			}
+			else {
+				if (options.onfail) {
+					onfail();
+				}
+			}
+		}
+	};
+}
+</script>
+</body>
+
+</html>

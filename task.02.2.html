@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="date" id="time">
+	<button id="submit">submit</button>
+	<div id="text"></div>
+</body>
+<script type="text/javascript">
+	
+	var button=document.getElementById("submit");
+	button.addEventListener("click",function(){
+	var time=document.getElementById("time").value;
+	var text=document.getElementById("text");
+	var times=time.split("-");
+	var interval=setInterval(function(){
+	var now=new Date();
+	var furture=new Date();
+	furture.setFullYear(times[0],times[1]-1,times[2]);
+	furture.setHours(0,0,0,0);
+	var diffs=furture-now;
+	if (!diffs||diffs<0) {
+		alert("false");
+		clearInterval(interval);
+		return;
+	}		
+	var diffday=Math.floor(diffs/(24*60*60*1000));
+	var diffhours=Math.floor(diffs%(24*60*60*1000)/(60*60*1000));
+	var diffminutes=Math.floor(diffs%(24*60*60*1000)%(60*60*1000)/(60*1000));
+	var diffseconds=Math.floor(diffs%(24*60*60*1000)%(60*60*1000)%(60*1000)/(1000));
+	text.innerHTML=diffday+"日"+diffhours+"时"+diffminutes+"分"+diffseconds+"秒";
+	},500);
+	
+	},false);
+</script>
+</html>

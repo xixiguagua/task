@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	ul{
+		list-style:none;
+	}
+	li{
+		width:200px;
+		background-color:#eee;
+	}
+	.active{
+		opacity:0.5;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="content">
+		<input type="text" id="input">
+		<ul>
+			
+		</ul>
+
+	</div>
+</body>
+<script type="text/javascript">
+	var suggestData=["a","aaa","adv","bb","dbb","bhjb"];
+	var input=document.getElementById("input");
+	var ullist=document.getElementsByTagName("ul")[0];
+	function addInputListener(){
+		if (input.addEventListener) {
+			input.addEventListener("input",onInput);
+		}
+		else {
+			if (input.attachEvent) {
+				input.attachEvent("onpropertychange",onProChange);
+			}
+		}
+	}
+	function onInput(event){
+		var inputvalue=event.target.value;
+		handleInput(inputvalue);
+	}
+	function onProChange(event){
+		var inputvalue="";
+		if (event.propertypeName.toLowerCase()=="value") {
+			inputvalue=event.srcElement.value;
+			handleInput(inputvalue);
+		}
+	}
+	function addClass(ele,name){
+	return ele.className=ele.className===""?name:ele.className+" "+name;
+	}
+	function removeClass(ele,classname){
+	return ele.className=ele.className.indexOf(classname)<0?ele.className:ele.className.replace(classname,"");
+	}
+	function delegateEvent(ele,tag,eventName,listener){
+		ele.addEventListener(eventName,function(event){
+			var target=event.target||event.srcElement;
+			if (target.tagName.toLowerCase()==tag.toLowerCase()) {
+				listener.call(target,event);
+			}
+		});
+	}
+	function handleInput(inputvalue){
+		var listString="";
+		var pattern=new RegExp("^"+inputvalue,"i");
+		if (inputvalue=="") {
+			ullist.style.display="none";
+		} 
+		else {
+			for (var i = 0, len = suggestData.length; i < len; i++) {
+				if (suggestData[i].match(pattern)) {
+					listString+="<li><span>"+inputvalue+"</span>"+suggestData[i].substr(inputvalue.length)+"</li>";
+				}
+			}
+			ullist.innerHTML=listString;
+			ullist.style.display="block";
+		}
+	}
+	function clickli(){
+		delegateEvent(ullist,"li","mouseover",function(event){
+			addClass(event.target,"active");
+		});
+		delegateEvent(ullist,"li","mouseout",function(){
+			removeClass(this,"active");
+		});
+		delegateEvent(ullist,"li","click",function(){
+			input.value=this.innerText;
+			ullist.style.display="none";
+		});
+	}
+	function keydown(){
+		input.addEventListener("keydown",function(event){
+			var hightlight=document.getElementsByClassName("active")[0];
+			if (event.keyCode==40) {
+				if (hightlight) {
+					var nextli=hightlight.nextSibling;
+					if (nextli) {
+						removeClass(hightlight,"active");
+						addClass(nextli,"active");
+					}
+				}
+				else {
+					
+					addClass(ullist.firstElementChild,"active");
+				}
+			}
+			if (event.keyCode==38) {
+				if (hightlight) {
+					var preli=hightlight.previousSibling;
+					if (preli) {
+						removeClass(hightlight,"active");
+						addClass(preli,"active");
+					}
+				}
+				else {
+					addClass(ullist.firstElementChild,"active");
+				}
+			}
+			if (event.keyCode==13) {
+				if (hightlight) {
+			
+					input.value=hightlight.innerText;
+					ullist.style.display="none";
+				}
+			}
+		});
+	}
+	addInputListener();
+	clickli();
+	keydown();
+</script>
+</html>

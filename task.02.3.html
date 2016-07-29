@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ol,
+    ul {
+        list-style: none;
+    }
+    
+    img {
+        width: 300px;
+        display: block;
+    }
+    
+    .content {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #2f2;
+        margin: 0 auto;
+    }
+    
+    .btn {
+        text-align: center;
+    }
+    
+    .list {
+        position: absolute;
+        width: 2000px;
+        bottom: 0;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    ol {
+        position: absolute;
+        left: 70px;
+        bottom: 10px;
+        clear: both;
+    }
+    
+    ol li {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #000;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 10px;
+        cursor: pointer;
+    }
+    
+    .row {
+        position: absolute;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        color: #fff;
+        background: rgba(209, 205, 205, 0.5);
+        z-index: 5;
+        margin-top: 135px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        visibility: hidden;
+    }
+    
+    .content:hover .row {
+        visibility: visible;
+    }
+    
+    #prev {
+        left: 0;
+    }
+    
+    #next {
+        right: 0;
+    }
+    
+    .btn {
+        margin-top: 20px;
+    }
+    
+    button {
+        width: 50px;
+        height: 30px;
+        margin: 0 10px;
+    }
+    
+    .active {
+        background-color: #f33;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="list" id="list">
+            <ul>
+                <li><img src="imges/005QA9V4jw1f3kf0w7ocfj30u01hcmye.jpg" alt=""></li>
+                <li><img src="imges/005QA9V4jw1f3kf0w8ensj30u01hcmyg.jpg" alt=""></li>
+                <li><img src="imges/005QA9V4jw1f3kf0wct9dj30u01hcmyd.jpg" alt=""></li>
+                <li><img src="imges/005QA9V4jw1f3kf0wdyhdj30u01hcaba.jpg" alt=""></li>
+                <li><img src="imges/005QA9V4jw1f3kf0x0myuj30u01hcgmx.jpg" alt=""></li>
+            </ul>
+        </div>
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <span id="prev" class="row"><</span>
+        <span id="next" class="row">></span>
+    </div>
+    <div class="btn">       
+        <button id="pause">暂停</button>
+    </div>
+</body>
+<script type="text/javascript">
+var list = document.getElementById("list");
+var prev = document.getElementById("prev");
+var next = document.getElementById("next");
+var ol = document.getElementsByTagName("ol")[0];
+var li = ol.getElementsByTagName("li");
+var forin = document.getElementById("forin");
+var back = document.getElementById("back");
+var pause = document.getElementById("pause");
+var timer = null;
+var imgwidth = list.getElementsByTagName("img")[0].offsetWidth;
+var activeid = 0;
+var nextid = 0;
+for (var i = 0, len = li.length; i < len; i++) {
+    li[i].index = i;
+}
+
+function addClass(ele, name) {
+    ele.className = ele.className == "" ? name : ele.className + " " + name;
+}
+
+function removeClass(ele, name) {
+    ele.className = ele.className.indexOf(name) < 0 ? ele.className : ele.className.replace(name, "");
+}
+
+function move(target) {
+    clearInterval(timer);
+    timer = setInterval(function() {
+        var speed = (target - list.offsetLeft) / 6;
+        speed =speed>0? Math.floor(speed):Math.ceil(speed);
+        list.style.left = list.offsetLeft + speed + "px";
+    }, 50);
+}
+
+function rotate(clickid) {
+    if (clickid >= 0) {
+        nextid = clickid;
+    } else {
+        nextid = activeid < 4 ? activeid + 1 : 0;
+    }
+    removeClass(li[activeid], "active");
+    addClass(li[nextid], "active");
+    move("-" + (nextid * imgwidth));
+    activeid = nextid;
+}
+
+var timers = setInterval(rotate, 2000);
+
+
+// for(var i=0,len=li.length;i<len;i++){
+// li[i].onclick=function(event){
+// 	// alert(event.target.index);
+// 	clearInterval(timers);
+// 	rotate(this.index);	
+// 	timers=setInterval(rotate,2000);	
+// };
+// }
+ol.addEventListener("click", function(event) {
+    clearInterval(timers);
+    rotate(event.target.index);
+    timers = setInterval(rotate, 2000);
+});
+prev.addEventListener("click", function() {
+    clearInterval(timers);
+    var targetid = activeid > 0 ? activeid - 1 : 4;
+    rotate(targetid);
+    timers = setInterval(rotate, 2000);
+});
+next.addEventListener("click", function() {
+    clearInterval(timers);
+    var targetid = activeid < 4 ? activeid + 1 : 0;
+    rotate(targetid);
+    timers = setInterval(rotate, 2000);
+});
+pause.addEventListener("click",function(){
+	clearInterval(timers);
+});
+</script>
+
+</html>

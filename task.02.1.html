@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="fav">
+	<button>submit</button>
+	<textarea name="favs" id="favs" cols="30" rows="10"></textarea>
+	<div id="tip"></div>
+	<button>submit</button>
+	<div id="text"></div>
+</body>
+<script type="text/javascript">
+
+ var button=document.getElementsByTagName("button")[1];
+ var tip=document.getElementById("tip");
+ function uni(arr){
+ 	var arrs=[];
+ 	for(var i=0,len=arr.length;i<len;i++){
+ 		if (arr[i]&&arrs.indexOf(arr[i])<0) {
+ 			arrs.push(arr[i]);
+ 		}
+ 	}
+ 	return arrs;
+ }
+ button.addEventListener("click",function(){
+
+	var fav=document.getElementById("favs").value.trim();
+	var favs=fav.split(/\s+|,|\n|\r|;|；|，|、/g);
+	var favlist=uni(favs);
+	var content="";
+	if (fav.length==0) {
+		tip.innerHTML="不能为空";
+		tip.style.border="1px solid #f33";
+		return false;
+	}else {
+		if (favlist.length>10) {
+		tip.innerHTML="太多了";
+		tip.style.border="1px solid #f33";
+		return false;
+	} else{
+		tip.innerHTML="";
+		tip.style.border="none";
+	}
+}	
+	for(var items in favlist){
+			content+='<input type="checkbox">'+favlist[items];
+	}
+	var text=document.getElementById("text").innerHTML=content;
+ 	
+ });
+var btn=document.getElementsByTagName("button")[0];
+btn.attachEvent("onclick",function(event){
+	alert(window.event.srcElement==this);
+});
+</script>
+</html>

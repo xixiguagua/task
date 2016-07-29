@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta name="toDo 单页应用" content="记事本 任务管理 webApp">
+        <meta name="description" content="用于记录待办事项的工具">
+        <meta name ="viewport" content ="width=device-width,initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no"> <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
+        <meta name="apple-mobile-web-app-title" content="待办事项"><!-- 添加到主屏后的标题（iOS 6 新增） -->
+        <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- 是否启用 WebApp 全屏模式 -->
+        <meta name="theme-color" content="#3C3764">
+    <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/fontello.css">
+</head>
+
+<body>
+    <header>
+    <!-- <button class="btn-back">< 返回</button> -->
+        <h1>TODO</h1>
+    </header>
+    <main>
+        <div class="left">
+            <p id="alltask" class="alltasks active">所有任务(<span class="task-num">1</span>)</p>
+			<div class="category">
+                <h2>分类列表</h2>
+                <div class="cg-list">
+                    <ul>
+                        <li><i class="icon-folder-open"></i>默认分类(<span class="task-num">1</span>)</li>
+                        <ul>
+                            <li class="cg-li"><i class="icon-doc"></i>默认子分类(<span class="task-num">1</span>)</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <button class="add" id="addcg"><i class="icon-plus"></i></button>
+        </div>
+        <div class="middle">
+            <div class="status">
+                <button id="all" class="btn active">所有</button>
+                <button id="unfinshed" class="btn">未完成</button>
+                <button id="finshed" class="btn">已完成</button>
+            </div>
+            <div class="task-list">
+				<div>
+				<p>2017-07-01</p>
+                <ul class="task">
+                	<li class="active"><i class="icon-ok-circled2"></i>任务说明<i class="icon-minus-circled"></i></li>
+                </ul>
+                </div>
+            </div>
+            <button class="add" id="addtask"><i class="icon-plus"></i></button>
+        </div>
+        <div class="right">
+            <div class="task-title">
+                <p class="title">使用说明<i class="icon-ok" id="icon-ok"></i><i class="icon-edit" id="icon-edit"></i></p>
+
+            </div>
+            <div class="task-time">
+                <p>任务日期<span></span></p>
+            </div>
+            <div class="task-content"><p>本应用为离线应用，数据将存储在本地硬盘</p></div>
+            <div class="edit-btn">
+                <button class="btn" id="submit">保存</button>
+                <button class="btn" id="cancle">放弃</button>
+            </div>
+        </div>
+    </main>
+    <!-- <div class="cover">
+        <p>新增分类</p>
+        <div class="">
+            <select name="" id=""></select>
+            <input name="" id="">
+            <button id="" class="">取消</button> 
+            <button id="" class="">确认</button>
+        </div> -->
+        <form action="" name="cover" id="cover">
+            <p class="category-add">新增分类</p>
+            <label for=""></label>
+        </form>
+    </div>
+</body>
+
+</html>

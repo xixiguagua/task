@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task.22</title>
+	<style type="text/css">
+		div{
+			border:1px solid #000;
+		}
+		#root{
+			width:500px;
+			height:200px;
+			padding:20px;
+		}
+		.child-1{
+			width:200px;
+			height:100px;
+			padding:20px;
+			float:left;
+		}
+		.child-2{
+			width:50px;
+			height:50px;
+			margin:20px;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+		<div class="child-1">
+			<div class="child-2"></div>
+			<div class="child-2"></div>
+		</div>
+		<div class="child-1">
+			<div class="child-2"></div>
+			<div class="child-2"></div>
+		</div>
+	</div>
+	<button id="pre">前序</button>
+	<button id="inorder">中序</button>
+	<button id="post">后序</button>
+</body>
+<script type="text/javascript">
+var pre=document.getElementById("pre");
+var inor=document.getElementById("inorder");
+var post=document.getElementById("post");
+var root=document.getElementById("root");
+var divlist=[];
+var timer=null;
+pre.onclick=function(){
+	reset();
+	preorder(root);
+	changecolor();
+}
+inor.onclick=function(){
+	reset();
+	inorder(root);
+	changecolor();
+}
+post.onclick=function(){
+	reset();
+	postorder(root);
+	changecolor();
+}
+function preorder(node){
+	if (node) {
+		divlist.push(node);
+		preorder(node.firstElementChild);
+		preorder(node.lastElementChild);
+	}
+}
+function inorder(node){
+	if (node) {
+		inorder(node.firstElementChild);
+		divlist.push(node);
+		inorder(node.lastElementChild);
+	}
+}
+function postorder(node){
+	if (node) {
+		postorder(node.firstElementChild);
+		postorder(node.lastElementChild);
+		divlist.push(node);
+	}
+}
+function changecolor(){
+	var i=0;
+	divlist[i].style.backgroundColor="blue";
+	timer=setInterval(function(arguments){
+	 	i++;
+	 	if (i<divlist.length) {
+	 		divlist[i-1].style.backgroundColor="#fff";
+	 		divlist[i].style.backgroundColor="blue";
+	 	}else{
+	 		clearInterval(timer);
+	 		divlist[divlist.length-1].style.backgroundColor="#fff";
+	 	}
+	 },500);
+}
+function reset(){
+	divlist=[];
+	clearInterval(timer);
+	var divs=document.getElementsByTagName("div");
+	for (var i = 0; i < divs.length; i++) {
+		divs[i].style.backgroundColor="#fff";
+	};
+}
+</script>
+</html>

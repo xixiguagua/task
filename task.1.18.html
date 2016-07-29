@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task.1.18</title>
+	<style type="text/css">
+	td{
+		width:30px;
+		height:30px;
+		color:#fff;
+		background-color:#f33;
+	}
+	</style>
+</head>
+<body>
+	<input type="number" id="element">
+	<button id="leftin">左侧入</button>
+	<button id="rightin">右侧入</button>
+	<button id="leftout">左侧出</button>
+	<button id="rightout">右侧出</button>
+	<table>
+		<tr id="trs">
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+	</table>
+</body>
+<script type="text/javascript">
+window.onload=function(){
+var trs=document.getElementById("trs");
+var num=document.getElementById("element");
+
+//右进
+	document.getElementById("rightin").onclick=function(){
+		var numval=num.value;
+		var td=document.createElement("td");
+		var textnode=document.createTextNode(numval);
+		td.appendChild(textnode);
+		trs.appendChild(td);
+	};
+	//左进
+	document.getElementById("leftin").onclick=function(){
+		var numval=num.value;
+		var td=document.createElement("td");
+		var textnode=document.createTextNode(numval);
+		td.appendChild(textnode);
+		trs.insertBefore(td,trs.firstChild);
+	};
+	//左出
+	document.getElementById("leftout").onclick=function(){
+		alert(trs.firstElementChild.innerText);
+		trs.removeChild(trs.firstElementChild);
+
+	};
+	//右出
+	document.getElementById("rightout").onclick=function(){
+		alert(trs.lastElementChild.innerText);
+		trs.removeChild(trs.lastElementChild);
+	};
+	//点击删除
+	document.getElementsByTagName("tr")[0].onclick=function(event){
+		event.target.parentNode.removeChild(event.target);
+	};
+
+	// var tds=document.getElementsByTagName("td");
+	// for (var i = 0; i < tds.length; i++) {
+	// 	tds[i].onclick=function(){
+	// 	this.parentNode.removeChild(this);
+	// };
+	// }
+
+	
+	};
+</script>
+</html>

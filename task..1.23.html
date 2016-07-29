@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task.1.23</title>
+	<style type="text/css">
+		div{
+			border:1px solid #000;
+		}
+		#root{
+			width:1000px;
+			height:200px;
+			padding:20px;
+		}
+		.child-1{
+			width:300px;
+			height:100px;
+			padding:10px;
+			float:left;
+		}
+		.child-2{
+			width:50px;
+			height:50px;
+			margin:10px;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+<button id="deep">深度遍历</button>
+	<button id="wide">广度遍历</button>
+	<button id="search">查找</button>
+<div>
+	<div id="root">
+		<div class="child-1 c1">
+			<div class="child-2 ch1"></div>
+			<div class="child-2 ch1"></div>
+			<div class="child-2 ch1"></div>
+		</div>
+		<div class="child-1 c2">
+			<div class="child-2 ch2"></div>
+			<div class="child-2 ch2"></div>
+			<div class="child-2 ch2"></div>
+			<div class="child-2 ch2"></div>	
+		</div>
+		<div class="child-1 c3">
+			<div class="child-2"></div>
+			<div class="child-2"></div>
+			<div class="child-2"></div>
+			<div class="child-2"></div>	
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+var deep=document.getElementById("deep");
+var wide=document.getElementById("wide");
+var search=document.getElementById("search");
+var root=document.getElementById("root");
+var divlist=[];
+	var i=0;
+var timer=null;
+deep.onclick=function(){
+	reset();
+	deeporder(root);
+	changecolor();
+}
+wide.onclick=function(){
+	reset();
+	i=0;
+	wideorder(root);
+	changecolor();
+}
+
+function deeporder(node){
+	if (node) {
+		divlist.push(node);
+		for (var i = 0; i < node.children.length; i++) {
+			deeporder(node.children[i]);
+		};
+	}
+}
+	
+function wideorder(node){
+
+	if (node) {
+		divlist.push(node);
+		wideorder(node.nextElementSibling);
+		node=divlist[i];
+		console.log(i);
+		i++;
+		wideorder(node.firstElementChild);
+	}
+}
+function changecolor(){
+	var i=0;
+	divlist[i].style.backgroundColor="blue";
+	timer=setInterval(function(arguments){
+	 	i++;
+	 	if (i<divlist.length) {
+	 		divlist[i-1].style.backgroundColor="#fff";
+	 		divlist[i].style.backgroundColor="blue";
+	 	}else{
+	 		clearInterval(timer);
+	 		divlist[divlist.length-1].style.backgroundColor="#fff";
+	 	}
+	 },500);
+}
+function reset(){
+	divlist=[];
+	
+	clearInterval(timer);
+	var divs=document.getElementsByTagName("div");
+	for (var i = 0; i < divs.length; i++) {
+		divs[i].style.backgroundColor="#fff";
+	};
+}
+</script>
+</html>

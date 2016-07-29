@@ -1,0 +1,171 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+
+@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+
+//var
+$bgcolor:#5D6684;
+$fontfamily:'Microsoft YaHei', 'SimHei', 'STHeiti', sans-serif;
+$fontsize:16px;
+$boxshadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+$shadow:1px 0 3px rgba(0, 0, 0, 0.35);
+//common
+html,body{
+  height: 100%;
+}
+body{
+  font-family:$fontfamily;
+  font-size:$fontsize;
+}
+button,select,input{
+  border:none;
+  outline:none;
+  font-family:$fontfamily;
+  text-align: center;
+}
+ul{
+  list-style:none;
+}
+//add button
+.add{
+  width:50px;
+  height: 50px;
+  @include border-radius(50%);
+  background-color:rgba($bgcolor,0.5);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  color:#fff;
+}
+//btn
+.btn{
+    width:60px;
+    height: 30px;
+    cursor: pointer;
+    &:hover,{
+      color:#fff;
+      background-color:rgba($bgcolor,.3);
+    }
+  }
+//header
+header{
+  position: absolute;
+  top:0;
+  width:100%;
+  height:60px;
+  background-color:$bgcolor;
+  @include box-shadow($boxshadow);
+}
+h1{
+  line-height:60px;
+  color:#fff;
+  margin-left:15px;
+}
+//main
+main{
+  @include display-flex;
+  @include flex-direction(row);
+  @include align-items(stretch);
+  @include justify-content(flex-start);
+  width:100%;
+  position: absolute;
+  top:60px;
+  bottom: 0;
+}
+//left
+.left{
+  @include order(1);
+  @include flex-grow(1);
+  background-color:rgba($bgcolor,.2);
+  @include box-shadow($shadow);
+  line-height:2;
+  position: relative;
+  @at-root{
+  	.active{
+    background-color:#F6F6F6;
+  	}
+    p,h2,li{
+      padding-left:15px;
+    }
+  }
+}
+.cg-li{
+      padding-left:30px;
+    }
+.cg-list li,.alltasks{
+  &:hover{
+    background-color:#F6F6F6;
+    cursor: pointer;
+  }
+}
+
+//middle
+.middle{
+  @include order(2);
+  @include flex-grow(1);
+  background-color:rgba($bgcolor,.1);
+  @include box-shadow($shadow);
+  line-height:2;
+  position: relative;
+}
+.status{
+  width:100%;
+  height:50px;
+  border-bottom: 1px dashed rgba($bgcolor,.3);
+  @include display-flex;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-around);
+  .active{
+    color:#fff;
+    background-color:rgba($bgcolor,.3);
+  }
+}
+.task{
+  li{
+    cursor: pointer;
+    @include box-shadow($shadow);
+   .active,&:hover{
+    background-color:#F6F6F6 ;  
+   }
+  .icon-minus-circled{
+  float:right;
+  }
+  }
+  
+}
+//right
+.right{
+	@include order(3);
+	@include flex-grow(4);
+	line-height: 2;
+  @include box-shadow($shadow);
+  @at-root{
+    .edit-btn{
+     position: absolute;
+     bottom: 10px;
+     right: 10px;
+     }
+  }
+}
+.title{
+  background-color:rgba($bgcolor,.3);
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  i{
+    float:right;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+}
+//pop
+.cover{
+  display: none;
+}
